@@ -29,6 +29,12 @@ function pagCadastroE(){
     document.getElementById("cadastrofreela").style.display = "none";
 }
 
+function voltar(){
+  document.getElementById("cadastroempresa").style.display = "none";
+  document.getElementById("login").style.display = "none";
+  document.getElementById("cadastrofreela").style.display = "none";
+}
+
 function logar() {
   let email = campoLogin.value;
   let senha = campoSenha.value;
@@ -46,6 +52,7 @@ function logar() {
       }
     }
   }
+  alert(mensagem)
 }
 
 function cadastrarFreela() {
@@ -64,7 +71,7 @@ function cadastrarFreela() {
       bancoDeDados = [];
     }
     if (existe(usuario, bancoDeDados)) {
-      alert("Esse login já foi cadastrado anteriormente");
+      alert("Esse email já foi cadastrado anteriormente");
     } else {
       bancoDeDados.push(usuario);
       localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados));
@@ -91,7 +98,7 @@ function cadastrarEmpresa() {
       bancoDeDados = [];
     }
     if (existe(usuario, bancoDeDados)) {
-      alert("Esse login já foi cadastrado anteriormente");
+      alert("Esse email já foi cadastrado anteriormente");
     } else {
       bancoDeDados.push(usuario);
       localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados));
@@ -104,7 +111,7 @@ function cadastrarEmpresa() {
 
 function existe(usuario, bancoDeDados) {
   for (let verificado of bancoDeDados) {
-    if (verificado.login == usuario.login) {
+    if (verificado.email == usuario.email) {
       return true;
     }
   }
