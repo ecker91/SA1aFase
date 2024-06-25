@@ -1,0 +1,22 @@
+div{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    width: 300px;
+    height: 20px;
+}
+button{
+    width: 150px;
+    align-items: end;
+}
+
+div#login{
+    display: none;
+}
+div#cadastroempresa{ 
+    display: none;
+}
+div#cadastrofreela{
+    display: none;
+}
