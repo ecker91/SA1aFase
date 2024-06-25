@@ -36,7 +36,7 @@ function voltar(){
 }
 
 function logar() {
-  let email = campoLogin.value;
+  let email = campoEmail.value;
   let senha = campoSenha.value;
   let mensagem = "E-mail ou senha incorreta!";
   let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"));
