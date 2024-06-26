@@ -43,3 +43,9 @@ div#cadastroempresa{
 div#cadastrofreela{
     display: none;
 }
+div#imagem{
+    display: flex;
+}
+img{
+    max-width: 500px;
+}
