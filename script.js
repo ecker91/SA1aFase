@@ -9,6 +9,12 @@ const campoCPF = document.getElementById("cpf")
 const campoDataNascimento = document.getElementById("nascimento")
 const campoCidade = document.getElementById("cidade")
 const campoNomeEmpresa = document.getElementById("nomeempresa")
+const campoNovoEmailEmpresa = document.getElementById("newemailempresa")
+const campoNovaSenhaEmpresa = document.getElementById("newpasswordempresa")
+const campoRepSenhaEmpresa = document.getElementById("reppasswordempresa")
+const campoTelefoneEmpresa = document.getElementById("telefoneempresa")
+const campoCPFEmpresa = document.getElementById("cpfempresa")
+const campoCidadeEmpresa = document.getElementById("cidadeempresa")
 const campoEndereco = document.getElementById("endereco")
 
 function pagLogin(){
@@ -47,11 +53,17 @@ function logar() {
     alert("Nenhum usuário cadastrado até o momento")
   } else {
     for (let usuario of bancoDeDados) {
-      if (usuario.email === email && usuario.senha === senha) {
+      if ( usuario.email == email && usuario.senha == senha ) {
         alert("Parabéns, você logou!")
-        localStorage.setItem("logado", JSON.stringify(usuario))
-        window.location.href = "home.html"
-        break;
+        if( usuario.endereco == null){
+          localStorage.setItem("logado", JSON.stringify(usuario))
+          window.location.href = "home1.html"
+          break
+        }else if(usuario.dataNascimento == null){
+          localStorage.setItem("logado", JSON.stringify(usuario))
+          window.location.href = "home2.html"
+          break;
+        }
       }
     }
     alert("E-mail ou senha incorreta!")
@@ -79,6 +91,14 @@ function cadastrarFreela() {
       bancoDeDados.push(usuario)
       localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados))
       alert("Usuário cadastrado com sucesso!")
+      document.getElementById("newemail").value = null
+      document.getElementById("newpassword").value = null
+      document.getElementById("reppassword").value = null
+      document.getElementById("nascimento").value = null
+      document.getElementById("telefone").value = null
+      document.getElementById("nomefreela").value = null
+      document.getElementById("cpf").value = null
+      document.getElementById("cidade").value = null
     }
   } else {
     alert("As senhas são diferentes!")
@@ -88,13 +108,13 @@ function cadastrarFreela() {
 function cadastrarEmpresa() {
   if (campoNovaSenha.value == campoRepSenha.value) {
     const usuario = {
-      email: campoNovoEmail.value,
-      senha: campoNovaSenha.value,
-      cpf: campoCPF.value,
+      email: campoNovoEmailEmpresa.value,
+      senha: campoNovaSenhaEmpresa.value,
+      cpf: campoCPFEmpresa.value,
       nome: campoNomeEmpresa.value,
-      telefone: campoTelefone.value,
-      endereco: campoEndereco.valure,
-      cidade: campoCidade.value,
+      telefone: campoTelefoneEmpresa.value,
+      endereco: campoEndereco.value,
+      cidade: campoCidadeEmpresa.value,
     }
     let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
     if (bancoDeDados == null) {
@@ -106,6 +126,14 @@ function cadastrarEmpresa() {
       bancoDeDados.push(usuario)
       localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados))
       alert("Usuário cadastrado com sucesso!")
+      document.getElementById("newemailempresa").value = null
+      document.getElementById("newpasswordempresa").value = null
+      document.getElementById("reppasswordempresa").value = null
+      document.getElementById("endereco").value = null
+      document.getElementById("telefoneempresa").value = null
+      document.getElementById("nomeempresa").value = null
+      document.getElementById("cpfempresa").value = null
+      document.getElementById("cidadeempresa").value = null
     }
   } else {
     alert("As senhas são diferentes!")
