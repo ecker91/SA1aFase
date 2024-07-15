@@ -16,6 +16,7 @@ const campoTelefoneEmpresa = document.getElementById("telefoneempresa")
 const campoCPFEmpresa = document.getElementById("cpfempresa")
 const campoCidadeEmpresa = document.getElementById("cidadeempresa")
 const campoEndereco = document.getElementById("endereco")
+let encontrado = -1
 
 function pagLogin(){
     document.getElementById("login").style.display = "flex";
@@ -152,3 +153,50 @@ function existe(usuario, bancoDeDados) {
 function logout() {
   window.location.href = "index.html"
 }
+
+function editarFreela(){
+  document.getElementById("cadastrofreela").style.display = "flex";
+}
+
+function salvarFreela() {
+  const novousuario = {
+    dataNascimento: campoDataNascimento.value,
+    cpf: campoCPF.value,
+    nome: campoNomeFreela.value,
+    telefone: campoTelefone.value,
+    cidade: campoCidade.value
+  }
+  usuario = JSON.parse(localStorage.getItem("logado"))
+    let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
+    if (usuario.nome !== novousuario.nome && novousuario.nome != null) {
+      usuario.nome = novousuario.nome
+    }
+    if (usuario.cpf !== novousuario.cpf && novousuario.cpf != null) {
+      usuario.cpf = novousuario.cpf
+    }
+    if (usuario.dataNascimento !== novousuario.dataNascimento && novousuario.dataNascimento != null) {
+      usuario.dataNascimento = novousuario.dataNascimento
+    }
+    if (usuario.telefone !== novousuario.telefone && novousuario.telefone != null) {
+      usuario.telefone = novousuario.telefone
+    }
+    if (usuario.cidade !== novousuario.cidade && novousuario.nome != cidade) {
+      usuario.cidade = novousuario.cidade
+    }
+    for(i=0;i<bancoDeDados.length;i++){
+      if(bancoDeDados[i].email == usuario.email){
+          encontrado = i
+      }
+    bancoDeDados.splice(encontrado,1)
+      bancoDeDados.push(usuario)
+      localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados))
+      document.getElementById("nascimento").value = null
+      document.getElementById("telefone").value = null
+      document.getElementById("nomefreela").value = null
+      document.getElementById("cpf").value = null
+      document.getElementById("cidade").value = null
+    }
+    localStorage.setItem("logado", JSON.stringify(usuario))
+    document.getElementById("cadastrofreela").style.display = "none";
+    alert("Usuário editado com sucesso!")
+  } 
