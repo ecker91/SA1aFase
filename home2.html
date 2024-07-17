@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    <button onclick="logout()">Log out</button>
+    <button onclick="editarEmpresa()">Editar informaçoes</button>
+    <div id="cadastroempresa">
+        Telefone<input type="text" id="telefoneempresa" placeholder="Digite o telefone de contato da empresa."><br>
+        CNPJ/CPF<input type="text" id="cpfempresa" placeholder="Digite o CNPJ da empresa ou o CPF do dono."><br>
+        Nome da Empresa<input type="text" id="nomeempresa" placeholder="Digite o nome de sua empresa."><br>
+        Endereço<input type="text" id="endereco" placeholder="Digite o endereço da empresa. "><br>
+        Cidade<input type="text" id="cidadeempresa" placeholder="Digite a cidade de residência da empresa."><br>
+        <button onclick="salvarEmpresa()">Salvar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

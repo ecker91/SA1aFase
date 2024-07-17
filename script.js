@@ -200,3 +200,51 @@ function salvarFreela() {
     document.getElementById("cadastrofreela").style.display = "none";
     alert("Usuário editado com sucesso!")
   } 
+
+  function editarEmpresa(){
+    document.getElementById("cadastroempresa").style.display = "flex";
+  }
+  
+  function salvarEmpresa() {
+    const novousuario = {
+      cpf: campoCPFEmpresa.value,
+      nome: campoNomeEmpresa.value,
+      telefone: campoTelefoneEmpresa.value,
+      endereco: campoEndereco.value,
+      cidade: campoCidadeEmpresa.value
+    }
+    usuario = JSON.parse(localStorage.getItem("logado"))
+      let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
+      if (usuario.nome !== novousuario.nome && novousuario.nome != null) {
+        usuario.nome = novousuario.nome
+      }
+      if (usuario.cpf !== novousuario.cpf && novousuario.cpf != null) {
+        usuario.cpf = novousuario.cpf
+      }
+      if (usuario.endereco !== novousuario.endereco && novousuario.endereco != null) {
+        usuario.endereco = novousuario.endereco
+      }
+      if (usuario.telefone !== novousuario.telefone && novousuario.telefone != null) {
+        usuario.telefone = novousuario.telefone
+      }
+      if (usuario.cidade !== novousuario.cidade && novousuario.nome != cidade) {
+        usuario.cidade = novousuario.cidade
+      }
+      for(i=0;i<bancoDeDados.length;i++){
+        if(bancoDeDados[i].email == usuario.email){
+            encontrado = i
+        }
+      bancoDeDados.splice(encontrado,1)
+        bancoDeDados.push(usuario)
+        localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados))
+        document.getElementById("endereco").value = null
+        document.getElementById("telefoneempresa").value = null
+        document.getElementById("nomeempresa").value = null
+        document.getElementById("cpfempresa").value = null
+        document.getElementById("cidadeempresa").value = null
+      }
+      localStorage.setItem("logado", JSON.stringify(usuario))
+      document.getElementById("cadastroempresa").style.display = "none";
+      alert("Usuário editado com sucesso!")
+    } 
+  
