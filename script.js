@@ -180,7 +180,7 @@ function salvarFreela() {
     telefone: campoTelefone.value,
     cidade: campoCidade.value
   }
-  usuario = JSON.parse(localStorage.getItem("logado"))
+    usuario = JSON.parse(localStorage.getItem("logado"))
     let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
     if (usuario.nome !== novousuario.nome && novousuario.nome != null) {
       usuario.nome = novousuario.nome
@@ -215,11 +215,11 @@ function salvarFreela() {
     alert("Usuário editado com sucesso!")
   } 
 
-  function editarEmpresa(){
+function editarEmpresa(){
     document.getElementById("cadastroempresa").style.display = "flex";
   }
   
-  function salvarEmpresa() {
+function salvarEmpresa() {
     const novousuario = {
       cpf: campoCPFEmpresa.value,
       nome: campoNomeEmpresa.value,
@@ -262,8 +262,11 @@ function salvarFreela() {
       alert("Usuário editado com sucesso!")
     } 
   
-    function pesquisar(){
+function pesquisar(){
       let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
+      if (bancoDeDados == null) {
+        alert("Nenhum usuário cadastrado até o momento")
+      }
       for (let verificado of bancoDeDados) {
         if (verificado.nome == campoBusca.value) {
           if(verificado.endereco){
@@ -274,8 +277,8 @@ function salvarFreela() {
             document.getElementById("nomeempresa").value = verificado.nome
             document.getElementById("cpfempresa").value = verificado.cpf
             document.getElementById("cidadeempresa").value = verificado.cidade
-          }
-          if(verificado.dataNascimento){
+            alert("Empresa encontrada! Veja os dados disponíveis na tela.")
+          }else if(verificado.dataNascimento){
             pagCadastroF()
             document.getElementById("newemail").value = verificado.email
             document.getElementById("nascimento").value = verificado.dataNascimento
@@ -283,8 +286,28 @@ function salvarFreela() {
             document.getElementById("nomefreela").value = verificado.nome
             document.getElementById("cpf").value = verificado.cpf
             document.getElementById("cidade").value = verificado.cidade
+            alert("Freelancer encontrado! Veja os dados disponíveis na tela.")
+          }else{
+            alert("Usuario não encontrado! Verifique se digitou o nome corretamente.")
           }
         }
       }
-      
     }
+function deletar(){
+    usuario = JSON.parse(localStorage.getItem("logado"))
+    let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
+    for(i=0;i<bancoDeDados.length;i++){
+      if(bancoDeDados[i].email == usuario.email){
+          encontrado = i
+      }
+    confirmacao = prompt("Digite sua senha para confirmar a exclusão:")
+    if(confirmacao == usuario.senha){
+        alert("Usuário deletado com sucesso!")
+        bancoDeDados.splice(encontrado,1)
+        localStorage.setItem("bancoDeDados", JSON.stringify(bancoDeDados))
+        logout()
+    }else{
+      alert("Senha incorreta! Tente novamente.")
+    }
+  }
+}
