@@ -7,7 +7,7 @@
     <title>Meufreela#</title>
 </head>
 <body>
-    <button onclick="pagLogin()">Log In</button> <button onclick="pagCadastroF()">Cadastro (Freelancer)</button> <button onclick="pagCadastroE()">Cadastro (Empresa)</button> <button onclick="voltar()" id="voltar">Voltar</button>
+    <button onclick="pagLogin()" id="logar">Log In</button><button onclick="pagCadastroF()">Cadastro (Freelancer)</button><button onclick="pagCadastroE()">Cadastro (Empresa)</button><button onclick="buscar()" id="buscar">Buscar</button><button onclick="voltar()" id="voltar">Voltar</button>
     <div id="login">
         E-mail<input type="text" placeholder="Digite seu E-mail." id="email"><br>
         Senha<input type="password" placeholder="Digite sua senha." id="password"><br>
@@ -36,6 +36,10 @@
         <button onclick="cadastrarEmpresa()">Cadastrar</button>
     </div>
     <div id="imagem"><img src="img0.jpg" alt=""></div>
+    <div id="pesquisa"><h1>Busca de Usuário Cadastrado</h1>
+        <input type="text" id="busca" placeholder="Digite o nome do freelancer ou empresa."><br>
+        <button onclick="pesquisar()">Pesquisar</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

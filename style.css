@@ -29,6 +29,12 @@ button{
 button#voltar{
     width: 50px;
 }
+button#logar{
+    width: 70px;
+}
+button#buscar{
+    width: 80px;
+}
 button:hover{
     border: 2px solid rgb(95, 145, 30);
     background-color: #ffffdd;
@@ -48,4 +54,8 @@ div#imagem{
 }
 img{
     max-width: 500px;
+}
+
+h1{
+    color: #205313;
 }

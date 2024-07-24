@@ -16,6 +16,7 @@ const campoTelefoneEmpresa = document.getElementById("telefoneempresa")
 const campoCPFEmpresa = document.getElementById("cpfempresa")
 const campoCidadeEmpresa = document.getElementById("cidadeempresa")
 const campoEndereco = document.getElementById("endereco")
+const campoBusca = document.getElementById("busca")
 let encontrado = -1
 
 function pagLogin(){
@@ -23,13 +24,15 @@ function pagLogin(){
     document.getElementById("cadastrofreela").style.display = "none";
     document.getElementById("cadastroempresa").style.display = "none";
     document.getElementById("imagem").style.display = "none";
-}
+    document.getElementById("pesquisa").style.display = "none";
+  }
 
 function pagCadastroF(){
     document.getElementById("cadastrofreela").style.display = "flex";
     document.getElementById("login").style.display = "none";
     document.getElementById("cadastroempresa").style.display = "none";
     document.getElementById("imagem").style.display = "none";
+    document.getElementById("pesquisa").style.display = "none";
 }
 
 function pagCadastroE(){
@@ -37,6 +40,7 @@ function pagCadastroE(){
     document.getElementById("login").style.display = "none";
     document.getElementById("cadastrofreela").style.display = "none";
     document.getElementById("imagem").style.display = "none";
+    document.getElementById("pesquisa").style.display = "none";
 }
 
 function voltar(){
@@ -44,6 +48,15 @@ function voltar(){
   document.getElementById("login").style.display = "none";
   document.getElementById("cadastrofreela").style.display = "none";
   document.getElementById("imagem").style.display = "flex";
+  document.getElementById("pesquisa").style.display = "none";
+}
+
+function buscar(){
+  document.getElementById("cadastroempresa").style.display = "none";
+  document.getElementById("login").style.display = "none";
+  document.getElementById("cadastrofreela").style.display = "none";
+  document.getElementById("imagem").style.display = "none";
+  document.getElementById("pesquisa").style.display = "flex";
 }
 
 function logar() {
@@ -151,6 +164,7 @@ function existe(usuario, bancoDeDados) {
 }
 
 function logout() {
+  localStorage.setItem("logado", "")
   window.location.href = "index.html"
 }
 
@@ -248,3 +262,29 @@ function salvarFreela() {
       alert("Usuário editado com sucesso!")
     } 
   
+    function pesquisar(){
+      let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
+      for (let verificado of bancoDeDados) {
+        if (verificado.nome == campoBusca.value) {
+          if(verificado.endereco){
+            pagCadastroE()
+            document.getElementById("newemailempresa").value = verificado.email
+            document.getElementById("endereco").value = verificado.endereco
+            document.getElementById("telefoneempresa").value = verificado.telefone
+            document.getElementById("nomeempresa").value = verificado.nome
+            document.getElementById("cpfempresa").value = verificado.cpf
+            document.getElementById("cidadeempresa").value = verificado.cidade
+          }
+          if(verificado.dataNascimento){
+            pagCadastroF()
+            document.getElementById("newemail").value = verificado.email
+            document.getElementById("nascimento").value = verificado.dataNascimento
+            document.getElementById("telefone").value = verificado.telefone
+            document.getElementById("nomefreela").value = verificado.nome
+            document.getElementById("cpf").value = verificado.cpf
+            document.getElementById("cidade").value = verificado.cidade
+          }
+        }
+      }
+      
+    }
