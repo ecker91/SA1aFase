@@ -182,19 +182,19 @@ function salvarFreela() {
   }
     usuario = JSON.parse(localStorage.getItem("logado"))
     let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
-    if (usuario.nome !== novousuario.nome && novousuario.nome != null) {
+    if (usuario.nome !== novousuario.nome && novousuario.nome != "") {
       usuario.nome = novousuario.nome
     }
-    if (usuario.cpf !== novousuario.cpf && novousuario.cpf != null) {
+    if (usuario.cpf !== novousuario.cpf && novousuario.cpf != "") {
       usuario.cpf = novousuario.cpf
     }
-    if (usuario.dataNascimento !== novousuario.dataNascimento && novousuario.dataNascimento != null) {
+    if (usuario.dataNascimento !== novousuario.dataNascimento && novousuario.dataNascimento != "") {
       usuario.dataNascimento = novousuario.dataNascimento
     }
-    if (usuario.telefone !== novousuario.telefone && novousuario.telefone != null) {
+    if (usuario.telefone !== novousuario.telefone && novousuario.telefone != "") {
       usuario.telefone = novousuario.telefone
     }
-    if (usuario.cidade !== novousuario.cidade && novousuario.nome != cidade) {
+    if (usuario.cidade !== novousuario.cidade && novousuario.cidade != "") {
       usuario.cidade = novousuario.cidade
     }
     for(i=0;i<bancoDeDados.length;i++){
@@ -229,19 +229,19 @@ function salvarEmpresa() {
     }
     usuario = JSON.parse(localStorage.getItem("logado"))
       let bancoDeDados = JSON.parse(localStorage.getItem("bancoDeDados"))
-      if (usuario.nome !== novousuario.nome && novousuario.nome != null) {
+      if (usuario.nome !== novousuario.nome && novousuario.nome != "") {
         usuario.nome = novousuario.nome
       }
-      if (usuario.cpf !== novousuario.cpf && novousuario.cpf != null) {
+      if (usuario.cpf !== novousuario.cpf && novousuario.cpf != "") {
         usuario.cpf = novousuario.cpf
       }
-      if (usuario.endereco !== novousuario.endereco && novousuario.endereco != null) {
+      if (usuario.endereco !== novousuario.endereco && novousuario.endereco != "") {
         usuario.endereco = novousuario.endereco
       }
-      if (usuario.telefone !== novousuario.telefone && novousuario.telefone != null) {
+      if (usuario.telefone !== novousuario.telefone && novousuario.telefone != "") {
         usuario.telefone = novousuario.telefone
       }
-      if (usuario.cidade !== novousuario.cidade && novousuario.nome != cidade) {
+      if (usuario.cidade !== novousuario.cidade && novousuario.cidade != "") {
         usuario.cidade = novousuario.cidade
       }
       for(i=0;i<bancoDeDados.length;i++){
