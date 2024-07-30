@@ -76,11 +76,12 @@ function logar() {
         }else if(usuario.dataNascimento == null){
           localStorage.setItem("logado", JSON.stringify(usuario))
           window.location.href = "home2.html"
-          break;
+          break
         }
+      }else{
+        alert("E-mail ou senha incorreta!")
       }
     }
-    alert("E-mail ou senha incorreta!")
   }
 }
 
